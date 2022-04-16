@@ -102,8 +102,8 @@ function renderLicensesBadge(license) {
 
 const init = () => {
     questions()
-        .then((answers) => renderLicensesBadge(answers.license))
-        .then((license) => console.log(license))
+        // .then((answers) => renderLicensesBadge(answers.license))
+        // .then((license) => console.log(license))
         .then((answers) => fs.writeFileSync('README.md', generateREADME(answers)))
         .then(() => console.log('Successfully wrote to README.md'))
         .catch((err) => console.error(err));
