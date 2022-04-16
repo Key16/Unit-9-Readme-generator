@@ -26,7 +26,7 @@ const generateREADME = ({ title }) =>
 const init = () => {
     questions()
         // Use writeFileSync method to use promises instead of a callback function
-        .then((answers) => fs.writeFileSync('README.md', generateREADME(answers)))
+        .then((answers) => fs.writeFileSync('READMEEXAMPLE.md', generateREADME(answers)))
         .then(() => console.log('Successfully wrote to README.md'))
         .catch((err) => console.error(err));
 };
