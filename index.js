@@ -11,7 +11,17 @@ const questions = () => {
             type: 'input',
             name: 'title',
             message: 'What is the title of your project?'
-        }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email?'
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What your github username?'
+        },
     ])
 }
 
@@ -19,7 +29,25 @@ const questions = () => {
 
 const generateREADME = ({ title }) =>
 
-    `# ${title}`;
+    `# ${title}
+
+    ## Description
+
+    ## Table of Contents
+
+    ## Installation
+
+    ## Usage
+
+    ## Licenses
+
+    ## Contributing
+
+    ## Tests
+
+    ## Questions
+
+    For any additional questions regarding the project, please reach out to me at my [Github](https://github.com/${github}), or email me at ${email}`;
 
 
 
