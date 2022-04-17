@@ -13,6 +13,11 @@ const questions = () => {
         },
         {
             type: 'input',
+            name: 'description',
+            message: 'Please write a description of this repo:'
+        },
+        {
+            type: 'input',
             name: 'installation',
             message: 'Please input installation instructions for packages:'
         },
@@ -26,6 +31,11 @@ const questions = () => {
             type: 'input',
             name: 'usage',
             message: 'Please input a usage guide:'
+        },
+        {
+            type: 'input',
+            name: 'contribution',
+            message: 'Please input contribution message:'
         },
         {
             type: 'input',
@@ -49,14 +59,14 @@ const questions = () => {
 
 // TODO: Create a function to write README file
 
-const generateREADME = ({ title, usage, test, installation, github, email, license }) =>
+const generateREADME = ({ title, description, contribution, usage, test, installation, github, email, license }) =>
 
 
     `# ${title}
 
 ${renderLicensesBadge(license)}
 ## Description
-
+${description}
 ## Table of Contents
 
 * [Installation](#installation)
@@ -78,10 +88,12 @@ How to use this code
 
 ${usage}
 ## Licenses
-This project is under the ${license} license
+This project is under the ${license}.
 
 ## Contributing
-If you would like to contribute it, you can follow these guidelines for how to do so.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. 
+
+${contribution}
 ## Tests 
 To run tests, use the following command:
 \`\`\`
