@@ -4,6 +4,7 @@ const fs = require('fs');
 
 
 const questions = () => {
+
     return inquirer.prompt([
         {
             type: 'input',
@@ -18,7 +19,7 @@ const questions = () => {
         {
             type: 'list',
             name: 'license',
-            choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense'],
+            choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense', 'WTFPL License'],
             message: 'Choose a licenses for your project:'
         },
         {
@@ -42,6 +43,8 @@ const questions = () => {
             message: 'Enter your github username (no @ required):'
         },
     ])
+
+
 }
 
 // TODO: Create a function to write README file
@@ -50,7 +53,8 @@ const generateREADME = ({ title, usage, test, installation, github, email, licen
 
 
     `# ${title}
-${license}
+
+${renderLicensesBadge(license)}
 ## Description
 
 ## Table of Contents
@@ -89,21 +93,43 @@ ${test}
 If you have any questions regarding this repository, you can contact me directly at ${email} or find more of my work at [${github}](https://github.com/${github})`;
 
 function renderLicensesBadge(license) {
-    let newlicense = ""
-    if (license === "MIT License") {
-        newlicense = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)"
+
+
+    if (license === 'MIT License') {
+        return `![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)`
     }
-    else {
-        newlicense = ""
+    else if (license === 'GNU GPLv3') {
+        return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
     }
-    return newlicense;
+    else if (license === 'GNU AGPLv3') {
+        return `[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`
+    }
+    else if (license === 'GNU LGPLv3') {
+        return `[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)`
+    }
+    else if (license === 'Mozilla Public License 2.0') {
+        return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
+    }
+    else if (license === 'Apache License 2.0') {
+        return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+    }
+    else if (license === 'Boost Software License 1.0') {
+        return `[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
+    }
+    else if (license === 'The Unlicense') {
+        return `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
+    }
+    else if (license === 'WTFPL License') {
+        return `[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)`
+    }
+
+    return "";
 }
 
 
 const init = () => {
     questions()
-        // .then((answers) => renderLicensesBadge(answers.license))
-        // .then((license) => console.log(license))
+
         .then((answers) => fs.writeFileSync('README.md', generateREADME(answers)))
         .then(() => console.log('Successfully wrote to README.md'))
         .catch((err) => console.error(err));
