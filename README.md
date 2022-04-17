@@ -4,6 +4,16 @@
 ## Description
 This application utilises the inquirer package in node.js to create command lines that will generate a readme.md file based on the responses. The license badges are also dynamically changed depending on the selection chosen in the prompts provided. In future I'd add an option to remove the content titles if there is none required.
 
+Please see the READMEEXAMPLE.md for an example of the output.
+
+Example of the command line
+
+![Readmegif](./assets/Images/readmecommandline.gif)
+
+Example of the readme output
+
+![Readmeexample](./assets/Images/examplereadme.gif)
+
 ## Table of Contents
 
 * [Installation](#installation)
