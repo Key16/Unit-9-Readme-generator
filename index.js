@@ -1,7 +1,8 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+//questions asked by inquirer in the command line
 
 const questions = () => {
 
@@ -57,7 +58,7 @@ const questions = () => {
 
 }
 
-// TODO: Create a function to write README file
+//Function that writes the read me base file, with deconstructed answers
 
 const generateREADME = ({ title, description, contribution, usage, test, installation, github, email, license }) =>
 
@@ -104,6 +105,7 @@ ${test}
 
 If you have any questions regarding this repository, you can contact me directly at ${email} or find more of my work at [${github}](https://github.com/${github})`;
 
+//function that renders the license badge
 function renderLicensesBadge(license) {
 
 
@@ -138,6 +140,7 @@ function renderLicensesBadge(license) {
     return "";
 }
 
+//initiates questions and then writes the file
 
 const init = () => {
     questions()
